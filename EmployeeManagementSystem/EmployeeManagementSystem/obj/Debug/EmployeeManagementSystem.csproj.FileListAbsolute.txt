@@ -9,3 +9,14 @@ C:\Users\boo_s\OneDrive\Documents\Uni Work\Middlesex\2024-25 CST2550 Software En
 C:\Users\boo_s\OneDrive\Documents\Uni Work\Middlesex\2024-25 CST2550 Software Engineering Management and Development\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\boo_s\OneDrive\Documents\Uni Work\Middlesex\2024-25 CST2550 Software Engineering Management and Development\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.exe
 C:\Users\boo_s\OneDrive\Documents\Uni Work\Middlesex\2024-25 CST2550 Software Engineering Management and Development\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.pdb
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\EmployeeManagementSystem.exe.config
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\EmployeeManagementSystem.exe
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\EmployeeManagementSystem.pdb
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.AssemblyReference.cache
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.SignInForm.resources
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.Properties.Resources.resources
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.RegisterForm.resources
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.GenerateResource.cache
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.exe
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.pdb

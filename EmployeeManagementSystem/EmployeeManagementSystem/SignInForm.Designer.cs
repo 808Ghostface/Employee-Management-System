@@ -37,6 +37,8 @@
             this.Register_btn = new System.Windows.Forms.Button();
             this.userWarning = new System.Windows.Forms.Label();
             this.passWarning = new System.Windows.Forms.Label();
+            this.passwordCB = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Signlbl
@@ -82,6 +84,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(360, 20);
             this.txtPass.TabIndex = 4;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // Enter_btn
             // 
@@ -131,11 +134,32 @@
             this.passWarning.Text = "label3";
             this.passWarning.Visible = false;
             // 
-            // Form1
+            // passwordCB
+            // 
+            this.passwordCB.AutoSize = true;
+            this.passwordCB.Location = new System.Drawing.Point(510, 225);
+            this.passwordCB.Name = "passwordCB";
+            this.passwordCB.Size = new System.Drawing.Size(15, 14);
+            this.passwordCB.TabIndex = 9;
+            this.passwordCB.UseVisualStyleBackColor = true;
+            this.passwordCB.CheckedChanged += new System.EventHandler(this.passwordCB_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(412, 225);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 14);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Show password:";
+            // 
+            // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 485);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.passwordCB);
             this.Controls.Add(this.passWarning);
             this.Controls.Add(this.userWarning);
             this.Controls.Add(this.Register_btn);
@@ -146,7 +170,7 @@
             this.Controls.Add(this.Loglbl);
             this.Controls.Add(this.Signlbl);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Form1";
+            this.Name = "SignInForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -164,6 +188,8 @@
         private System.Windows.Forms.Button Register_btn;
         private System.Windows.Forms.Label userWarning;
         private System.Windows.Forms.Label passWarning;
+        private System.Windows.Forms.CheckBox passwordCB;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -61,5 +61,17 @@ namespace EmployeeManagementSystem
             Register.Show(); 
             this.Hide(); 
         }
+
+        private void passwordCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if(passwordCB.Checked) 
+            { 
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPass.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

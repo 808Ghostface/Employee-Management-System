@@ -33,5 +33,14 @@ namespace EmployeeManagementSystem.Properties {
                 return ((string)(this["CompanyDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM tbl_WorkersInfo")]
+        public string SQL {
+            get {
+                return ((string)(this["SQL"]));
+            }
+        }
     }
 }

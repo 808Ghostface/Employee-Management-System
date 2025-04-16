@@ -31,7 +31,7 @@
             this.btnInfo = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
-            this.lblstudentID = new System.Windows.Forms.Label();
+            this.lblEmployeeID = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPostcode = new System.Windows.Forms.TextBox();
@@ -95,14 +95,14 @@
             this.label15.TabIndex = 90;
             this.label15.Text = "ID:";
             // 
-            // lblstudentID
+            // lblEmployeeID
             // 
-            this.lblstudentID.AutoSize = true;
-            this.lblstudentID.Location = new System.Drawing.Point(340, 63);
-            this.lblstudentID.Name = "lblstudentID";
-            this.lblstudentID.Size = new System.Drawing.Size(37, 13);
-            this.lblstudentID.TabIndex = 89;
-            this.lblstudentID.Text = "_____";
+            this.lblEmployeeID.AutoSize = true;
+            this.lblEmployeeID.Location = new System.Drawing.Point(340, 63);
+            this.lblEmployeeID.Name = "lblEmployeeID";
+            this.lblEmployeeID.Size = new System.Drawing.Size(37, 13);
+            this.lblEmployeeID.TabIndex = 89;
+            this.lblEmployeeID.Text = "_____";
             // 
             // label9
             // 
@@ -408,7 +408,7 @@
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.lblstudentID);
+            this.Controls.Add(this.lblEmployeeID);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtPostcode);
@@ -455,7 +455,7 @@
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblstudentID;
+        private System.Windows.Forms.Label lblEmployeeID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtPostcode;

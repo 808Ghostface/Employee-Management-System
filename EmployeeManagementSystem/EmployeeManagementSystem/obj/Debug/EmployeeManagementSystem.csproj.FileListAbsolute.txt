@@ -20,3 +20,6 @@ C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManag
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.exe
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.pdb
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\CompanyDatabase.mdf
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\bin\Debug\CompanyDatabase_log.ldf
+C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.EmployeeView.resources

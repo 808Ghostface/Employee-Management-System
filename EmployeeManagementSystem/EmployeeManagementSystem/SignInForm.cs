@@ -34,8 +34,8 @@ namespace EmployeeManagementSystem
 
             if (AdminUser == UserName && AdminPass == PassWord) //If the username and password typed into the respective textboxes match the coding an event will be triggered
             {
-                MainForm Main = new MainForm(); //Declares the main form's existence
-                Main.Show(); //Creates a function that shows the main form
+                EmployeeView employee = new EmployeeView(); //Declares the main form's existence
+                employee.Show(); //Creates a function that shows the main form
                 this.Hide(); //Creates a function that hides this form
 
             }

@@ -72,11 +72,11 @@
     <Compile Include="SignInForm.Designer.cs">
       <DependentUpon>SignInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="EmployeeViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="EmployeeViewForm.Designer.cs">
+      <DependentUpon>EmployeeViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagerRegisterForm.cs">
       <SubType>Form</SubType>
@@ -92,8 +92,8 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeViewForm.resx">
+      <DependentUpon>EmployeeViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>

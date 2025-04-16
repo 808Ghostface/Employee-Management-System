@@ -43,7 +43,9 @@ namespace EmployeeManagementSystem
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            Adding addingForm = new Adding(); //Declares form 1's existence
+            addingForm.Show(); //Creates a function that shows form 1
+            this.Hide(); //Creates a function that hides form 2
         }
 
         private void btnBack_Click(object sender, EventArgs e)

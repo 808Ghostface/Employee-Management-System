@@ -54,16 +54,12 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.cbAmount = new System.Windows.Forms.ComboBox();
-            this.cbPoint = new System.Windows.Forms.ComboBox();
             this.lblPoint = new System.Windows.Forms.Label();
             this.lblFlame = new System.Windows.Forms.Label();
             this.lblStar = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -295,30 +291,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // cbAmount
-            // 
-            this.cbAmount.FormattingEnabled = true;
-            this.cbAmount.Items.AddRange(new object[] {
-            "10",
-            "50",
-            "100",
-            "500"});
-            this.cbAmount.Location = new System.Drawing.Point(839, 173);
-            this.cbAmount.Name = "cbAmount";
-            this.cbAmount.Size = new System.Drawing.Size(160, 21);
-            this.cbAmount.TabIndex = 66;
-            // 
-            // cbPoint
-            // 
-            this.cbPoint.FormattingEnabled = true;
-            this.cbPoint.Items.AddRange(new object[] {
-            "Merit",
-            "Disciplinary"});
-            this.cbPoint.Location = new System.Drawing.Point(839, 132);
-            this.cbPoint.Name = "cbPoint";
-            this.cbPoint.Size = new System.Drawing.Size(160, 21);
-            this.cbPoint.TabIndex = 65;
-            // 
             // lblPoint
             // 
             this.lblPoint.AutoSize = true;
@@ -373,24 +345,6 @@
             this.label5.TabIndex = 59;
             this.label5.Text = "Comments:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(735, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
-            this.label4.TabIndex = 58;
-            this.label4.Text = "Point Amount:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(735, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Point Type:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -431,16 +385,12 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.txtComment);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cbAmount);
-            this.Controls.Add(this.cbPoint);
             this.Controls.Add(this.lblPoint);
             this.Controls.Add(this.lblFlame);
             this.Controls.Add(this.lblStar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "EmployeeView";
             this.Text = "MainForm";
@@ -478,16 +428,12 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.ComboBox cbAmount;
-        private System.Windows.Forms.ComboBox cbPoint;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label lblFlame;
         private System.Windows.Forms.Label lblStar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
     }
 }

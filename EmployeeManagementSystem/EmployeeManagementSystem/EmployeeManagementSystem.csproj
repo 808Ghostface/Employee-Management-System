@@ -133,10 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\EmployeeDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\EmployeeDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>EmployeeDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>

@@ -61,10 +61,17 @@ namespace EmployeeManagementSystem
             cmd.Parameters.Add(new SqlParameter("@Id", EmployeeIDvalue)); //asigning values to parameters within the table
             cmd.Parameters.Add(new SqlParameter("@Date", dateTimePicker1.Value));
             cmd.Parameters.Add(new SqlParameter("@Comment", comm));
+            try
+            {
+                cmd.ExecuteNonQuery();
 
-            cmd.ExecuteNonQuery();
+                MessageBox.Show("Updated");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
 
-            MessageBox.Show("Updated");
             con.Close();
         }
 
@@ -79,7 +86,7 @@ namespace EmployeeManagementSystem
             SqlConnection con = new SqlConnection(conString);
             con.Open();//opening connection
 
-            SqlCommand cmd = new SqlCommand("ShowWID", con); //calls stored procedure
+            SqlCommand cmd = new SqlCommand("ViewID", con); //calls stored procedure
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -317,6 +324,30 @@ namespace EmployeeManagementSystem
                 con.Close();//closing connection
                 Skip();
             }
+        }
+
+        private void btnView_Click_1(object sender, EventArgs e)
+        {
+            string conString;//creating variables
+
+            conString = Properties.Settings.Default.EmployeeDBConnectionString; //setting up property and connection string
+
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();//opening connection
+
+            SqlCommand cmd = new SqlCommand("ViewID", con); //calls stored procedure
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dataTable = new DataTable();
+
+            adapter.Fill(dataTable);//filling table
+
+            dataGridView1.DataSource = binder; //connecting datagridview to binder
+
+            binder.DataSource = dataTable;
+
+            con.Close();//closing connection
         }
     }
 }

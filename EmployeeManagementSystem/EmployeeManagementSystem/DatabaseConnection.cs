@@ -33,11 +33,11 @@ namespace EmployeeManagementSystem
             connect.Open(); // opening connection to database
             System.Data.SqlClient.SqlDataAdapter dataAdapt = new System.Data.SqlClient.SqlDataAdapter(sqlStr, connect); //creating a SqlClient.SqlDataAdapter 'da_1'. '(sql_string,con)' tells system what table to retrieve data from, the 'con' is the connection object.
 
-            System.Data.DataSet dataSet = new System.Data.DataSet(); //creating 'dat_set' and returns DatatSet
+            System.Data.DataSet dataSet = new System.Data.DataSet(); //creating 'dataSet' and returns DatatSet
             dataAdapt.Fill(dataSet, "EmployeeTable_Dat_1"); // filling the DataSet
             connect.Close(); //closing the connection
 
-            return dataSet; //returns the 'dat_set'
+            return dataSet; //returns the 'dataSet'
         }
         public void UpdateDatabase(System.Data.DataSet ds)
         {
@@ -50,4 +50,5 @@ namespace EmployeeManagementSystem
         }
 
     }
+
 }

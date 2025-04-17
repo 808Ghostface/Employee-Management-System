@@ -26,17 +26,17 @@ namespace EmployeeManagementSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\CompanyDataba" +
-            "se.mdf;Integrated Security=True")]
-        public string CompanyDatabaseConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Resources\\Emp" +
+            "loyeeDB.mdf;Integrated Security=True")]
+        public string EmployeeDBConnectionString {
             get {
-                return ((string)(this["CompanyDatabaseConnectionString"]));
+                return ((string)(this["EmployeeDBConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM tbl_WorkersInfo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM WorkersInfo")]
         public string SQL {
             get {
                 return ((string)(this["SQL"]));

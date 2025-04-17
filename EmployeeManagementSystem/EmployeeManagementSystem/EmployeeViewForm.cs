@@ -22,10 +22,10 @@ namespace EmployeeManagementSystem
         BindingSource binder = new BindingSource(); //binds datagrid to the database
 
 
-        DatabaseConnection objConnect;//variable that stores the connection object
-        string conString;// variable the stores connection strring from setting page
-        DataSet ds;// creating another dataset
-        DataRow dRow;//creating a datarow variable
+        DatabaseConnection objectCon;//variable that stores the connection object
+        string conStr;// variable the stores connection strring from setting page
+        DataSet dataS;// creating another dataset
+        DataRow dataR;//creating a datarow variable
 
         int MaxRows; //variables
         int inc = 0;
@@ -46,11 +46,11 @@ namespace EmployeeManagementSystem
 
         public void commentSave() //creating method
         {
-            string query = "INSERT INTO tbl_ManagementInfo (WorkersID, Date_Issued, Comment)";
-            query += " VALUES (@WorkersID, @Date_Issued, @Comment)"; //instantiating values into query
+            string query = "INSERT INTO ManagementInfo (Id, Date, Comment)";
+            query += " VALUES (@Id, @Date, @Comment)"; //instantiating values into query
 
             string conString; //declaring connection string in this method
-            conString = Properties.Settings.Default.CompanyDatabaseConnectionString;
+            conString = Properties.Settings.Default.EmployeeDBConnectionString;
             SqlConnection con = new SqlConnection(conString);
             con.Open();
             SqlCommand cmd = new SqlCommand(query, con);
@@ -58,8 +58,8 @@ namespace EmployeeManagementSystem
             int EmployeeIDvalue = int.Parse(lblEmployeeID.Text);
             string comm = txtComment.Text;
 
-            cmd.Parameters.Add(new SqlParameter("@WorkersID", EmployeeIDvalue)); //asigning values to parameters within the table
-            cmd.Parameters.Add(new SqlParameter("@Date_Issued", dateTimePicker1.Value));
+            cmd.Parameters.Add(new SqlParameter("@Id", EmployeeIDvalue)); //asigning values to parameters within the table
+            cmd.Parameters.Add(new SqlParameter("@Date", dateTimePicker1.Value));
             cmd.Parameters.Add(new SqlParameter("@Comment", comm));
 
             cmd.ExecuteNonQuery();
@@ -74,7 +74,7 @@ namespace EmployeeManagementSystem
 
             string conString;//creating variables
 
-            conString = Properties.Settings.Default.CompanyDatabaseConnectionString; //setting up property and connection string
+            conString = Properties.Settings.Default.EmployeeDBConnectionString; //setting up property and connection string
 
             SqlConnection con = new SqlConnection(conString);
             con.Open();//opening connection
@@ -110,31 +110,30 @@ namespace EmployeeManagementSystem
             this.Hide(); //Creates a function that hides form 3
         }
 
-        private void NavigateRecords()//creating method
+        private void Skip()//creating method
         {
-            dRow = ds.Tables[0].Rows[inc];// accessing one row at a time
-            lblEmployeeID.Text = dRow.ItemArray.GetValue(0).ToString();// text on form to table rows
-            txtFirstName.Text = dRow.ItemArray.GetValue(1).ToString();
-            txtLastName.Text = dRow.ItemArray.GetValue(2).ToString();
-            txtRole.Text = dRow.ItemArray.GetValue(3).ToString();
-            txtAddress.Text = dRow.ItemArray.GetValue(4).ToString();
-            txtPostcode.Text = dRow.ItemArray.GetValue(5).ToString();
-            txtEmail.Text = dRow.ItemArray.GetValue(6).ToString();
+            dataR = dataS.Tables[0].Rows[inc];// accessing one row at a time
+            lblEmployeeID.Text = dataR.ItemArray.GetValue(0).ToString();// text on form to table rows
+            txtFirstName.Text = dataR.ItemArray.GetValue(1).ToString();
+            txtLastName.Text = dataR.ItemArray.GetValue(2).ToString();
+            txtRole.Text = dataR.ItemArray.GetValue(3).ToString();
+            txtAddress.Text = dataR.ItemArray.GetValue(4).ToString();
+            txtPostcode.Text = dataR.ItemArray.GetValue(5).ToString();
+            txtEmail.Text = dataR.ItemArray.GetValue(6).ToString();
         }
         private void EmployeeView_Load(object sender, EventArgs e)
         {
             try
             {
-                objConnect = new DatabaseConnection();//creating an object
-                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// instatiating the connection 
+                objectCon = new DatabaseConnection();//creating an object
+                conStr = Properties.Settings.Default.EmployeeDBConnectionString;// instatiating the connection 
 
-                objConnect.connection_string = conString;//passing SQL to database connection
-                objConnect.Sql = Properties.Settings.Default.SQL;
+                objectCon.connectionStrProp = conStr;//passing SQL to database connection
+                objectCon.SQLprop = Properties.Settings.Default.SQL;
 
-                ds = objConnect.GetConnection;// calling GetConnection Method from form load
-                MaxRows = ds.Tables[0].Rows.Count;// counting rows in table
-
-                NavigateRecords();
+                dataS = objectCon.GetConnection;// calling GetConnection Method from form load
+                MaxRows = dataS.Tables[0].Rows.Count;// counting rows in table
+                Skip();
 
             }
             catch (Exception err) // if there is an error loading a message will pop up
@@ -145,38 +144,7 @@ namespace EmployeeManagementSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if (inc > 0)
-            {
-                inc--; // moves the table backwards by 1
-                NavigateRecords(); //calls method
-                string conString;
-                int employeeIDvalue = int.Parse(lblEmployeeID.Text);
-
-                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
-
-                SqlConnection con = new SqlConnection(conString);
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
-                cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue)); //initialising a new parameter
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);//filling table
-
-                dataGridView1.DataSource = binder;//connecting datagridview to binder
-
-                binder.DataSource = dataTable;
-
-                con.Close();//closing connection
-            }
-            else
-            {
-                MessageBox.Show("No more profiles.", "Warning");
-            }
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -190,11 +158,11 @@ namespace EmployeeManagementSystem
             if (inc != MaxRows - 1)
             {
                 inc++;
-                NavigateRecords();
+                Skip();
                 string conString;// declaring variables
                 int employeeIDvalue = int.Parse(lblEmployeeID.Text);
 
-                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+                conString = Properties.Settings.Default.EmployeeDBConnectionString;// connection string
 
                 SqlConnection con = new SqlConnection(conString);
                 con.Open(); //opening connection
@@ -223,40 +191,37 @@ namespace EmployeeManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            int i;
-            if (!int.TryParse(txtSearch.Text, out i))//if statement that checks whether the information is filled
+            if (inc > 0)
             {
+                inc--; // moves the table backwards by 1
+                Skip(); //calls method
+                string conString;
+                int employeeIDvalue = int.Parse(lblEmployeeID.Text);
 
-                MessageBox.Show("Only type numbers in the textbox please");
-
-            }
-            else
-            {
-                string conString;// declaring variables
-                int employeeIDvalue = int.Parse(txtSearch.Text);
-
-                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+                conString = Properties.Settings.Default.EmployeeDBConnectionString;// connection string
 
                 SqlConnection con = new SqlConnection(conString);
-                con.Open();//opening connection
+                con.Open();
 
                 SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue));//initialising a new parameter
+                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue)); //initialising a new parameter
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
                 DataTable dataTable = new DataTable();
 
-                adapter.Fill(dataTable);
+                adapter.Fill(dataTable);//filling table
 
                 dataGridView1.DataSource = binder;//connecting datagridview to binder
 
                 binder.DataSource = dataTable;
 
                 con.Close();//closing connection
-                NavigateRecords();
+            }
+            else
+            {
+                MessageBox.Show("No more profiles.", "Warning");
             }
         }
         private void btnInfo_Click(object sender, EventArgs e)
@@ -264,14 +229,14 @@ namespace EmployeeManagementSystem
             string conString;// declaring variables
             int WorkerIDvalue = int.Parse(lblEmployeeID.Text);
 
-            conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+            conString = Properties.Settings.Default.EmployeeDBConnectionString;// connection string
 
             SqlConnection con = new SqlConnection(conString);
             con.Open();//opening connection
 
-            SqlCommand cmd = new SqlCommand("Combine", con);//calls stored procedure
+            SqlCommand cmd = new SqlCommand("ComWorkandManage", con);//calls stored procedure
             cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-            cmd.Parameters.Add(new SqlParameter("combi", WorkerIDvalue));//initialising a new parameter
+            cmd.Parameters.Add(new SqlParameter("@Combine", WorkerIDvalue));//initialising a new parameter
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -315,5 +280,43 @@ namespace EmployeeManagementSystem
 
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            int i;
+            if (!int.TryParse(txtSearch.Text, out i))//if statement that checks whether the information is filled
+            {
+
+                MessageBox.Show("Only type numbers in the textbox please");
+
+            }
+            else
+            {
+                string conString;// declaring variables
+                int employeeIDvalue = int.Parse(txtSearch.Text);
+
+                conString = Properties.Settings.Default.EmployeeDBConnectionString;// connection string
+
+                SqlConnection con = new SqlConnection(conString);
+                con.Open();//opening connection
+
+                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
+                cmd.CommandType = CommandType.StoredProcedure;//declaring data type
+                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue));//initialising a new parameter
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+
+                dataGridView1.DataSource = binder;//connecting datagridview to binder
+
+                binder.DataSource = dataTable;
+
+                con.Close();//closing connection
+                Skip();
+            }
+        }
     }
 }

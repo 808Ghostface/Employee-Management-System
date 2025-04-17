@@ -111,10 +111,10 @@ namespace EmployeeManagementSystem
             try
             {
                 objConnect = new DatabaseConnection();//creating an object
-                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// instatiating the connection
+                conString = Properties.Settings.Default.EmployeeDBConnectionString;// instatiating the connection
 
-                objConnect.connection_string = conString;//passing SQL to database connection
-                objConnect.Sql = Properties.Settings.Default.SQL;
+                objConnect.connectionStrProp = conString;//passing SQL to database connection
+                objConnect.SQLprop = Properties.Settings.Default.SQL;
 
                 ds = objConnect.GetConnection;// calling GetConnection Method from form load
                 MaxRows = ds.Tables[0].Rows.Count;// counting rows in table

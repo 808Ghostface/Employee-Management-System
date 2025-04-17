@@ -63,11 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompanyDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CompanyDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="AddEmployeeForm.cs">
       <SubType>Form</SubType>
@@ -123,17 +118,6 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CompanyDatabaseDataSet.xsc">
-      <DependentUpon>CompanyDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CompanyDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CompanyDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CompanyDatabaseDataSet.xss">
-      <DependentUpon>CompanyDatabaseDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,12 +132,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CompanyDatabase.mdf">
+    <None Include="Resources\EmployeeDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CompanyDatabase_log.ldf">
+    </None>
+    <Content Include="Resources\EmployeeDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>CompanyDatabase.mdf</DependentUpon>
+      <DependentUpon>EmployeeDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

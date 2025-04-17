@@ -262,9 +262,9 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(104, 544);
+            this.btnBack.Location = new System.Drawing.Point(71, 544);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(78, 23);
+            this.btnBack.Size = new System.Drawing.Size(111, 23);
             this.btnBack.TabIndex = 69;
             this.btnBack.Text = "Back to Login";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -321,6 +321,7 @@
             this.btnSearch.TabIndex = 95;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnView
             // 

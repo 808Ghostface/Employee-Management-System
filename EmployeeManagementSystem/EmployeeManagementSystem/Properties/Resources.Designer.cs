@@ -63,9 +63,9 @@ namespace EmployeeManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CompanyDatabase {
+        internal static byte[] EmployeeDB {
             get {
-                object obj = ResourceManager.GetObject("CompanyDatabase", resourceCulture);
+                object obj = ResourceManager.GetObject("EmployeeDB", resourceCulture);
                 return ((byte[])(obj));
             }
         }

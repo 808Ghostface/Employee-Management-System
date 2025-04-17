@@ -84,6 +84,7 @@ namespace EmployeeManagementSystem
             txtPostcode.ReadOnly = false;
             txtEmail.ReadOnly = false;
             txtID.ReadOnly = false;
+            hireDate.Enabled = true;
         }
 
         private void btnNext_Click(object sender, EventArgs e)

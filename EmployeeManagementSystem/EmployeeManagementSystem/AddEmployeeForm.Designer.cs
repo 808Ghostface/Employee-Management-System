@@ -51,11 +51,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.hireDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(167, 272);
+            this.txtID.Location = new System.Drawing.Point(167, 305);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(70, 20);
@@ -64,7 +66,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(94, 275);
+            this.label7.Location = new System.Drawing.Point(94, 308);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 63;
@@ -265,11 +267,30 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "First Name";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(97, 273);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(26, 13);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Hire";
+            // 
+            // hireDate
+            // 
+            this.hireDate.Enabled = false;
+            this.hireDate.Location = new System.Drawing.Point(167, 267);
+            this.hireDate.Name = "hireDate";
+            this.hireDate.Size = new System.Drawing.Size(181, 20);
+            this.hireDate.TabIndex = 66;
+            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 515);
+            this.Controls.Add(this.hireDate);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSavedit);
@@ -326,5 +347,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker hireDate;
     }
 }

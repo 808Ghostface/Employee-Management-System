@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,21 +19,101 @@ namespace EmployeeManagementSystem
         {
             InitializeComponent();
         }
-        BindingSource binder = new BindingSource(); //binds datagridview to connection
+        BindingSource binder = new BindingSource(); //binds datagrid to the database
 
-        DatabaseConnection objConnect; //variable that stores the connection object
-        string conString; // variable the stores connection strring from setting page
-        DataSet ds; // creating another dataset
-        DataRow dRow; //creating a datarow variable
+
+        DatabaseConnection objConnect;//variable that stores the connection object
+        string conString;// variable the stores connection strring from setting page
+        DataSet ds;// creating another dataset
+        DataRow dRow;//creating a datarow variable
 
         int MaxRows; //variables
         int inc = 0;
 
-        private void NavigateRecords() //creating method
-        {
-            dRow = ds.Tables[0].Rows[inc]; // accessing one row at a time
+        // creating strings so information can be passed to the next form
+        public static string First = "";
+        public static string Last = "";
+        public static string Year = "";
+        public static string ID = "";
+        public static string workerComments = "";
+        public static string Date = "";
 
-            lblEmployeeID.Text = dRow.ItemArray.GetValue(0).ToString(); // text on form to table rows
+        public void workerData()
+        {
+            workerComments = txtComment.Text;
+            Date = dateTimePicker1.Text;
+        }
+
+        public void commentSave() //creating method
+        {
+            string query = "INSERT INTO tbl_ManagementInfo (WorkersID, Date_Issued, Comment)";
+            query += " VALUES (@WorkersID, @Date_Issued, @Comment)"; //instantiating values into query
+
+            string conString; //declaring connection string in this method
+            conString = Properties.Settings.Default.CompanyDatabaseConnectionString;
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            int EmployeeIDvalue = int.Parse(lblEmployeeID.Text);
+            string comm = txtComment.Text;
+
+            cmd.Parameters.Add(new SqlParameter("@WorkersID", EmployeeIDvalue)); //asigning values to parameters within the table
+            cmd.Parameters.Add(new SqlParameter("@Date_Issued", dateTimePicker1.Value));
+            cmd.Parameters.Add(new SqlParameter("@Comment", comm));
+
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show("Updated");
+            con.Close();
+        }
+
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+
+            string conString;//creating variables
+
+            conString = Properties.Settings.Default.CompanyDatabaseConnectionString; //setting up property and connection string
+
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();//opening connection
+
+            SqlCommand cmd = new SqlCommand("ShowWID", con); //calls stored procedure
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dataTable = new DataTable();
+
+            adapter.Fill(dataTable);//filling table
+
+            dataGridView1.DataSource = binder; //connecting datagridview to binder
+
+            binder.DataSource = dataTable;
+
+            con.Close();//closing connection
+
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddEmployeeForm AddForm = new AddEmployeeForm(); //Declares form 2's existence
+            AddForm.Show(); //Creates a function that shows form 2
+            this.Hide(); //Creates a function that hides form 3
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            SignInForm SignForm = new SignInForm(); //Declares form 1's existence
+            SignForm.Show(); //Creates a function that shows form 1
+            this.Hide(); //Creates a function that hides form 3
+        }
+
+        private void NavigateRecords()//creating method
+        {
+            dRow = ds.Tables[0].Rows[inc];// accessing one row at a time
+            lblEmployeeID.Text = dRow.ItemArray.GetValue(0).ToString();// text on form to table rows
             txtFirstName.Text = dRow.ItemArray.GetValue(1).ToString();
             txtLastName.Text = dRow.ItemArray.GetValue(2).ToString();
             txtRole.Text = dRow.ItemArray.GetValue(3).ToString();
@@ -40,54 +121,51 @@ namespace EmployeeManagementSystem
             txtPostcode.Text = dRow.ItemArray.GetValue(5).ToString();
             txtEmail.Text = dRow.ItemArray.GetValue(6).ToString();
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void EmployeeView_Load(object sender, EventArgs e)
         {
-            Adding addingForm = new Adding(); //Declares form 1's existence
-            addingForm.Show(); //Creates a function that shows form 1
-            this.Hide(); //Creates a function that hides form 2
+            try
+            {
+                objConnect = new DatabaseConnection();//creating an object
+                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// instatiating the connection 
+
+                objConnect.connection_string = conString;//passing SQL to database connection
+                objConnect.Sql = Properties.Settings.Default.SQL;
+
+                ds = objConnect.GetConnection;// calling GetConnection Method from form load
+                MaxRows = ds.Tables[0].Rows.Count;// counting rows in table
+
+                NavigateRecords();
+
+            }
+            catch (Exception err) // if there is an error loading a message will pop up
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            SignInForm signIn = new SignInForm(); //Declares form 1's existence
-            signIn.Show(); //Creates a function that shows form 1
-            this.Hide(); //Creates a function that hides form 2
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if (inc != MaxRows - 1) // advancing table rows by 1
+            if (inc > 0)
             {
-                inc++;
-                NavigateRecords();//calls method
-                string conString;// declaring variables
-                int studentIDvalue = int.Parse(lblEmployeeID.Text);
+                inc--; // moves the table backwards by 1
+                NavigateRecords(); //calls method
+                string conString;
+                int employeeIDvalue = int.Parse(lblEmployeeID.Text);
 
                 conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
 
                 SqlConnection con = new SqlConnection(conString);
-                con.Open();//opening connection
+                con.Open();
 
-                SqlCommand cmd = new SqlCommand("Combine", con);//calls stored procedure
+                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-                cmd.Parameters.Add(new SqlParameter("combi", studentIDvalue));//initialising a new parameter
+                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue)); //initialising a new parameter
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
                 DataTable dataTable = new DataTable();
 
-                adapter.Fill(dataTable); //filling table
+                adapter.Fill(dataTable);//filling table
 
                 dataGridView1.DataSource = binder;//connecting datagridview to binder
 
@@ -97,16 +175,133 @@ namespace EmployeeManagementSystem
             }
             else
             {
-                MessageBox.Show("No more profiles.", "Warning"); // shows a warning if the table has run out of rows
+                MessageBox.Show("No more profiles.", "Warning");
             }
         }
 
-        private void btnInfo_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
+            workerData();
+            commentSave();//calling method
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (inc != MaxRows - 1)
+            {
+                inc++;
+                NavigateRecords();
+                string conString;// declaring variables
+                int employeeIDvalue = int.Parse(lblEmployeeID.Text);
+
+                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+
+                SqlConnection con = new SqlConnection(conString);
+                con.Open(); //opening connection
+
+                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
+                cmd.CommandType = CommandType.StoredProcedure;//declaring data type
+                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue));//initialising a new parameter
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);//filling table
+
+                dataGridView1.DataSource = binder;//connecting datagridview to binder
+
+                binder.DataSource = dataTable;//closing connection
+
+                con.Close();
+            }
+            else
+            {
+                MessageBox.Show("No more profiles.", "Warning");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            int i;
+            if (!int.TryParse(txtSearch.Text, out i))//if statement that checks whether the information is filled
+            {
+
+                MessageBox.Show("Only type numbers in the textbox please");
+
+            }
+            else
+            {
+                string conString;// declaring variables
+                int employeeIDvalue = int.Parse(txtSearch.Text);
+
+                conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+
+                SqlConnection con = new SqlConnection(conString);
+                con.Open();//opening connection
+
+                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
+                cmd.CommandType = CommandType.StoredProcedure;//declaring data type
+                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue));//initialising a new parameter
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+
+                dataGridView1.DataSource = binder;//connecting datagridview to binder
+
+                binder.DataSource = dataTable;
+
+                con.Close();//closing connection
+                NavigateRecords();
+            }
+        }
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            string conString;// declaring variables
+            int WorkerIDvalue = int.Parse(lblEmployeeID.Text);
+
+            conString = Properties.Settings.Default.CompanyDatabaseConnectionString;// connection string
+
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();//opening connection
+
+            SqlCommand cmd = new SqlCommand("Combine", con);//calls stored procedure
+            cmd.CommandType = CommandType.StoredProcedure;//declaring data type
+            cmd.Parameters.Add(new SqlParameter("combi", WorkerIDvalue));//initialising a new parameter
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dataTable = new DataTable();
+
+            adapter.Fill(dataTable); //filling table
+
+            dataGridView1.DataSource = binder;//connecting datagridview to binder
+
+            binder.DataSource = dataTable;
+
+            con.Close();//closing connection
+        }
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string NewCom; //creating variables
+            string commDat;
+            string comm;
+
+            DataGridViewRow selectRow = dataGridView1.Rows[e.RowIndex]; //this gets the rows values in the data grid
+
+            NewCom = selectRow.Cells[0].Value.ToString(); //accesses the cells in the row
+            commDat = selectRow.Cells[3].Value.ToString();
+            comm = selectRow.Cells[4].Value.ToString();
+
+            lblEmployeeID.Text = NewCom; // linking variables to form data
+            dateTimePicker1.Text = commDat;
+            txtComment.Text = comm;
+        }
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
 
         }
@@ -115,5 +310,10 @@ namespace EmployeeManagementSystem
         {
 
         }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

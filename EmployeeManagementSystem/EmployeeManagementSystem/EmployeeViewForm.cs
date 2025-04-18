@@ -22,7 +22,7 @@ namespace EmployeeManagementSystem
         BindingSource binder = new BindingSource(); //binds datagrid to the database
 
         DatabaseConnection objectCon;//variable that stores the connection object
-        string conStr;// variable the stores connection strring from setting page
+        string conStr;// variable the stores connection string from setting page
         DataSet dataS;// creating another dataset
         DataRow dataR;//creating a datarow variable
 
@@ -57,7 +57,7 @@ namespace EmployeeManagementSystem
             int EmployeeIDvalue = int.Parse(lblEmployeeID.Text);
             string comm = txtComment.Text;
 
-            cmd.Parameters.Add(new SqlParameter("@Id", EmployeeIDvalue)); //asigning values to parameters within the table
+            cmd.Parameters.Add(new SqlParameter("@Id", EmployeeIDvalue)); //assigning values to parameters in the table
             cmd.Parameters.Add(new SqlParameter("@Date", dateTimePicker1.Value));
             cmd.Parameters.Add(new SqlParameter("@Comment", comm));
             try
@@ -72,34 +72,6 @@ namespace EmployeeManagementSystem
             }
 
             con.Close();
-        }
-
-
-        private void btnView_Click(object sender, EventArgs e)
-        {
-
-            string conString;//creating variables
-
-            conString = Properties.Settings.Default.EmployeeDBConnectionString; //setting up property and connection string
-
-            SqlConnection con = new SqlConnection(conString);
-            con.Open();//opening connection
-
-            SqlCommand cmd = new SqlCommand("ViewID", con); //calls stored procedure
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-            DataTable dataTable = new DataTable();
-
-            adapter.Fill(dataTable);//filling table
-
-            dataGridView1.DataSource = binder; //connecting datagridview to binder
-
-            binder.DataSource = dataTable;
-
-            con.Close();//closing connection
-
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -55,6 +55,8 @@ Properties > Settings.settings file
 The SQL query should match your database structure (e.g., selecting all columns from the EmployeeTable).
 
 
+
+
 # 📘 Project Documentation: Employee Management System
 ## 🔖 Project Title
 ### Employee Management System using Windows Forms and SQL Server

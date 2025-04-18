@@ -17,12 +17,9 @@
 - Database: SQL
 - Frontend: Windows Forms (C#)
 
-📄 Employee Viewer - README
 🔧 Requirements
 Windows OS
-
 .NET Framework (version 4.x or above)
-
 Visual Studio (recommended)
 
 🛠️ How to Compile & Run

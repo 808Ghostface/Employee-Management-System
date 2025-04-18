@@ -17,7 +17,7 @@
 - Database: SQL
 - Frontend: Windows Forms (C#)
 
-###🔧 Requirements
+### 🔧 Requirements
 Windows OS
 .NET Framework (version 4.x or above)
 Visual Studio (recommended)

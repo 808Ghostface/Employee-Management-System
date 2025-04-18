@@ -42,7 +42,6 @@ It loads and displays the first employee’s details:
 
 ID, First Name, Last Name, Role, Address, Postcode, Email
 
-The Skip() method shows each row from the database — you can add navigation buttons (like "Next", "Previous") to use this.
 
 To update data:
 

@@ -52,10 +52,7 @@ Ensure your database connection string and SQL query are correctly set in:
 
 Properties > Settings.settings file
 
-The SQL query should match your database structure (e.g., selecting all columns from the EmployeeTable).
-
-
-
+The SQL query should match your database structure (e.g., selecting all columns from the EmployeeTable). <br><br>
 
 # 📘 Project Documentation: Employee Management System
 ## 🔖 Project Title

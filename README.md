@@ -14,5 +14,5 @@
 
 ### 🛠 Tech Stack
 - Backend: C#
-- Database: TBC
-- Frontend: TBC
+- Database: SQL
+- Frontend: Windows Forms (C#)

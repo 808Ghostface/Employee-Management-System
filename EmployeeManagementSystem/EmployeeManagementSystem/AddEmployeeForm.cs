@@ -28,7 +28,7 @@ namespace EmployeeManagementSystem
         private void NavigateRecords()
         {
             dRow = ds.Tables[0].Rows[inc];
-            txtID.Text = dRow.ItemArray.GetValue(0).ToString();
+            lbl_ID.Text = dRow.ItemArray.GetValue(0).ToString();
             txtFirstName.Text = dRow.ItemArray.GetValue(1).ToString();
             txtLastName.Text = dRow.ItemArray.GetValue(2).ToString();
             txtRole.Text = dRow.ItemArray.GetValue(3).ToString();
@@ -64,7 +64,7 @@ namespace EmployeeManagementSystem
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            txtID.Clear(); //clears textboxes for user
+             //clears textboxes for user
             txtFirstName.Clear();
             txtLastName.Clear();
             txtRole.Clear();
@@ -74,6 +74,7 @@ namespace EmployeeManagementSystem
             btnAdd.Enabled = false;
             btnSave.Enabled = true;
             btnEdit.Enabled = false;
+            btnSavedit.Enabled=false;
             btnCancel.Enabled = true;
             btnBack.Enabled = false;
             btnNext.Enabled = false;
@@ -83,7 +84,6 @@ namespace EmployeeManagementSystem
             txtAddress.ReadOnly = false;
             txtPostcode.ReadOnly = false;
             txtEmail.ReadOnly = false;
-            txtID.ReadOnly = false;
             hireDate.Enabled = true;
         }
 
@@ -114,7 +114,7 @@ namespace EmployeeManagementSystem
                 conString = Properties.Settings.Default.EmployeeDBConnectionString;// instatiating the connection
 
                 objConnect.connectionStrProp = conString;//passing SQL to database connection
-                objConnect.SQLprop = Properties.Settings.Default.SQL;
+                objConnect.SQL = Properties.Settings.Default.SQL;
 
                 ds = objConnect.GetConnection;// calling GetConnection Method from form load
                 MaxRows = ds.Tables[0].Rows.Count;// counting rows in table
@@ -136,6 +136,7 @@ namespace EmployeeManagementSystem
             row[4] = txtAddress.Text;
             row[5] = txtPostcode.Text;
             row[6] = txtEmail.Text;
+            row[7] = hireDate.Value;
 
 
             ds.Tables[0].Rows.Add(row);
@@ -167,7 +168,6 @@ namespace EmployeeManagementSystem
             txtAddress.ReadOnly = true;
             txtPostcode.ReadOnly = true;
             txtEmail.ReadOnly = true;
-            txtID.ReadOnly = true;
         }
 
         private void btnSavedit_Click(object sender, EventArgs e)
@@ -208,7 +208,7 @@ namespace EmployeeManagementSystem
         {
             try
             {
-                ds.Tables[0].Rows[inc].Delete();//deletes rows fro dataset not database
+                ds.Tables[0].Rows[inc].Delete();//deletes rows from dataset not database
                 objConnect.UpdateDatabase(ds);// deletes row from database
 
                 MaxRows = ds.Tables[0].Rows.Count;
@@ -238,7 +238,6 @@ namespace EmployeeManagementSystem
             txtAddress.ReadOnly = false;
             txtPostcode.ReadOnly = false;
             txtEmail.ReadOnly = false;
-            txtID.ReadOnly = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -259,7 +258,6 @@ namespace EmployeeManagementSystem
             txtAddress.ReadOnly = true;
             txtPostcode.ReadOnly = true;
             txtEmail.ReadOnly = true;
-            txtID.ReadOnly = true;
         }
     }
 }

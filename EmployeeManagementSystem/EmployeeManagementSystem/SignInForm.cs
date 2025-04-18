@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,14 +56,6 @@ namespace EmployeeManagementSystem
                 MessageBox.Show("Your username or password is incorrect. Please try again."); // if the username/password is entered incorrectly, this messagebox will show
             }
         }
-
-        private void Register_btn_Click(object sender, EventArgs e)
-        {
-            RegisterForm Register = new RegisterForm();
-            Register.Show(); 
-            this.Hide(); 
-        }
-
         private void passwordCB_CheckedChanged(object sender, EventArgs e)
         {
             if(passwordCB.Checked) 

@@ -19,7 +19,6 @@ C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManag
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.AddEmployeeForm.resources
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.SignInForm.resources
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.Properties.Resources.resources
-C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.RegisterForm.resources
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.GenerateResource.cache
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\boo_s\Employee-Management-System\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\EmployeeManagementSystem.exe

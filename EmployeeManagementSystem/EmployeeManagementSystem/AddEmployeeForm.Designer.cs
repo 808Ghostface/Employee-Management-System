@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSavedit = new System.Windows.Forms.Button();
             this.btnDirect = new System.Windows.Forms.Button();
@@ -53,15 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.hireDate = new System.Windows.Forms.DateTimePicker();
+            this.lbl_ID = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(167, 305);
-            this.txtID.Name = "txtID";
-            this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(70, 20);
-            this.txtID.TabIndex = 64;
             // 
             // label7
             // 
@@ -284,14 +276,23 @@
             this.hireDate.Size = new System.Drawing.Size(181, 20);
             this.hireDate.TabIndex = 66;
             // 
+            // lbl_ID
+            // 
+            this.lbl_ID.AutoSize = true;
+            this.lbl_ID.Location = new System.Drawing.Point(162, 308);
+            this.lbl_ID.Name = "lbl_ID";
+            this.lbl_ID.Size = new System.Drawing.Size(31, 13);
+            this.lbl_ID.TabIndex = 67;
+            this.lbl_ID.Text = "____";
+            // 
             // AddEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 515);
+            this.Controls.Add(this.lbl_ID);
             this.Controls.Add(this.hireDate);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSavedit);
             this.Controls.Add(this.btnDirect);
@@ -323,31 +324,30 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnSavedit;
-        private System.Windows.Forms.Button btnDirect;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
+        public System.Windows.Forms.Button btnSavedit;
+        public System.Windows.Forms.Button btnDirect;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPostcode;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtRole;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtFirstName;
+        public System.Windows.Forms.TextBox txtPostcode;
+        public System.Windows.Forms.TextBox txtEmail;
+        public System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.Button btnBack;
+        public System.Windows.Forms.Button btnNext;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtRole;
+        public System.Windows.Forms.TextBox txtLastName;
+        public System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker hireDate;
+        public System.Windows.Forms.DateTimePicker hireDate;
+        private System.Windows.Forms.Label lbl_ID;
     }
 }

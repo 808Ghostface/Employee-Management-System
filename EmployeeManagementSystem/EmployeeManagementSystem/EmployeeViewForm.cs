@@ -21,7 +21,6 @@ namespace EmployeeManagementSystem
         }
         BindingSource binder = new BindingSource(); //binds datagrid to the database
 
-
         DatabaseConnection objectCon;//variable that stores the connection object
         string conStr;// variable the stores connection strring from setting page
         DataSet dataS;// creating another dataset
@@ -136,7 +135,7 @@ namespace EmployeeManagementSystem
                 conStr = Properties.Settings.Default.EmployeeDBConnectionString;// instatiating the connection 
 
                 objectCon.connectionStrProp = conStr;//passing SQL to database connection
-                objectCon.SQLprop = Properties.Settings.Default.SQL;
+                objectCon.SQL = Properties.Settings.Default.SQL;
 
                 dataS = objectCon.GetConnection;// calling GetConnection Method from form load
                 MaxRows = dataS.Tables[0].Rows.Count;// counting rows in table
@@ -151,7 +150,9 @@ namespace EmployeeManagementSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            
+            SignInForm Log = new SignInForm();
+            Log.Show();
+            this.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -174,9 +175,9 @@ namespace EmployeeManagementSystem
                 SqlConnection con = new SqlConnection(conString);
                 con.Open(); //opening connection
 
-                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
+                SqlCommand cmd = new SqlCommand("ComWorkandManage", con);//calls stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue));//initialising a new parameter
+                cmd.Parameters.Add(new SqlParameter("@Combine", employeeIDvalue));//initialising a new parameter
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -210,9 +211,9 @@ namespace EmployeeManagementSystem
                 SqlConnection con = new SqlConnection(conString);
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("GetWorkerByID", con);//calls stored procedure
+                SqlCommand cmd = new SqlCommand("ComWorkAndManage", con);//calls stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;//declaring data type
-                cmd.Parameters.Add(new SqlParameter("@GetWorkerID", employeeIDvalue)); //initialising a new parameter
+                cmd.Parameters.Add(new SqlParameter("@Combine", employeeIDvalue)); //initialising a new parameter
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -280,7 +281,7 @@ namespace EmployeeManagementSystem
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            txtComment.Clear();
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

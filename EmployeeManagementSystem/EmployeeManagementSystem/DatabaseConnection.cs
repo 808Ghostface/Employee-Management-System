@@ -11,7 +11,7 @@ namespace EmployeeManagementSystem
         private string sqlStr; //creating variables
         private string ConnectionStr;
 
-        public string SQLprop // creating a write-only property
+        public string SQL // creating a write-only property
         {
             set { sqlStr = value; } // assigning value to sql_string
 

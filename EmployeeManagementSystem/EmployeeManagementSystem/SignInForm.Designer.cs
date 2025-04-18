@@ -34,7 +34,6 @@
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.Enter_btn = new System.Windows.Forms.Button();
-            this.Register_btn = new System.Windows.Forms.Button();
             this.userWarning = new System.Windows.Forms.Label();
             this.passWarning = new System.Windows.Forms.Label();
             this.passwordCB = new System.Windows.Forms.CheckBox();
@@ -90,25 +89,13 @@
             // 
             this.Enter_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Enter_btn.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F);
-            this.Enter_btn.Location = new System.Drawing.Point(258, 257);
+            this.Enter_btn.Location = new System.Drawing.Point(442, 272);
             this.Enter_btn.Name = "Enter_btn";
             this.Enter_btn.Size = new System.Drawing.Size(83, 33);
             this.Enter_btn.TabIndex = 5;
             this.Enter_btn.Text = "Enter";
             this.Enter_btn.UseVisualStyleBackColor = true;
             this.Enter_btn.Click += new System.EventHandler(this.Enter_btn_Click);
-            // 
-            // Register_btn
-            // 
-            this.Register_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Register_btn.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F);
-            this.Register_btn.Location = new System.Drawing.Point(448, 257);
-            this.Register_btn.Name = "Register_btn";
-            this.Register_btn.Size = new System.Drawing.Size(77, 32);
-            this.Register_btn.TabIndex = 6;
-            this.Register_btn.Text = "Register";
-            this.Register_btn.UseVisualStyleBackColor = true;
-            this.Register_btn.Click += new System.EventHandler(this.Register_btn_Click);
             // 
             // userWarning
             // 
@@ -162,7 +149,6 @@
             this.Controls.Add(this.passwordCB);
             this.Controls.Add(this.passWarning);
             this.Controls.Add(this.userWarning);
-            this.Controls.Add(this.Register_btn);
             this.Controls.Add(this.Enter_btn);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
@@ -185,7 +171,6 @@
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button Enter_btn;
-        private System.Windows.Forms.Button Register_btn;
         private System.Windows.Forms.Label userWarning;
         private System.Windows.Forms.Label passWarning;
         private System.Windows.Forms.CheckBox passwordCB;
